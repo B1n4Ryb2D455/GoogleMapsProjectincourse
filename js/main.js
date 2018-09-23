@@ -8,3 +8,16 @@
 //         })
 //     };
 //     </script>
+
+// var tribeca = { lat: 40.719526, lng: -74.9980244 };
+// var marker = new google.maps.Marker({
+//     position: tribeca,
+//     map: map,
+//     title: 'Tribeca Marker'
+// });
+// var infowindow = new google.maps.infowindow({
+//     content: 'Something should open when I click here.'
+// });
+// marker.addListener('click', function () {
+//     infowindow.open(map, marker);
+// });
