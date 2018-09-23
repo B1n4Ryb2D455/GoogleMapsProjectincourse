@@ -54,7 +54,6 @@
                 var title = locations[i].title;
                 // create one marker per location, put into marker array
                 var marker = new google.maps.Marker({
-                    map: map,
                     position: position,
                     title: title,
                     animation: google.maps.Animation.DROP,
@@ -69,10 +68,11 @@
                     populateInfoWindow(this, largeInfoWindow);
                 });
             }
-            map.fitBounds(bounds);
 
             document.getElementById('show-listings').addEventListener('click', showListings);
             document.getElementById('hide-listings').addEventListener('click', hideListings);
+
+        }
 
             // populate infowindow when clicked - one window based on position
             function populateInfoWindow(marker, infowindow) {
@@ -87,7 +87,25 @@
                     });
                 }
             }
-        };
+
+            // look through markers and show them
+
+            function showListings() {
+                var bounds = new google.maps.LatLngBounds();
+                // extend boundaries of each marker and display the marker
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                    bounds.extend(markers[i].position);
+                }
+                map.fitBounds(bounds);
+            }
+
+            // loop through listings and hide them
+            function hideListings() {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(null);
+                }
+            }
 
     </script>
     <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
