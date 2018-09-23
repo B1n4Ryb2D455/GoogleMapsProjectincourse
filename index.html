@@ -71,6 +71,9 @@
             }
             map.fitBounds(bounds);
 
+            document.getElementById('show-listings').addEventListener('click', showListings);
+            document.getElementById('hide-listings').addEventListener('click', hideListings);
+
             // populate infowindow when clicked - one window based on position
             function populateInfoWindow(marker, infowindow) {
                 // make sure a window isn't already opened
