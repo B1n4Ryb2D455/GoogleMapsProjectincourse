@@ -59,6 +59,20 @@
                     populateInfoWindow(this, largeInfoWindow);
                 });
             }
+
+            // populate infowindow when clicked - one window based on position
+            function populateInfoWindow(marker, infowindow) {
+                // make sure a window isn't already opened
+                if (infowindow.marker != marker) {
+                    infowindow.marker = marker;
+                    infowindow.setContent('<div>' + marker.title + '</div>');
+                    infowindow.open(map, marker);
+                    // clear marker property if window is closed
+                    infowindow.addListener('closeclick', function() {
+                        infowindow.setMarker(null);
+                    });
+                }
+            }
         };
 
     </script>
