@@ -39,6 +39,7 @@
             ];
 
             var largeInfoWindow = new google.maps.InfoWindow();
+            var bounds = new google.maps.LatLngBounds();
 
             for (var i = 0; i < locations.length; i++) {
                 // get position from location array
@@ -54,11 +55,14 @@
                 });
                 // Push marker to array of markers
                 markers.push(marker);
+                // extend boundaries for new markers
+                bounds.extend(marker.position);
                 // created onClick event to open infowindo on each marker
                 marker.addListener('click', function() {
                     populateInfoWindow(this, largeInfoWindow);
                 });
             }
+            map.fitBounds(bounds);
 
             // populate infowindow when clicked - one window based on position
             function populateInfoWindow(marker, infowindow) {
