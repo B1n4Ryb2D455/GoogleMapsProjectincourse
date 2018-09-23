@@ -38,14 +38,14 @@
                 { title: 'Chinatown Home Space', location: { lat: 40.7180628, lng: -73.9961237} },
             ];
 
-            var largeInfoWindow = new.google.maps.InfoWindow();
+            var largeInfoWindow = new google.maps.InfoWindow();
 
             for (var i = 0; i < locations.length; i++) {
                 // get position from location array
                 var position = locations[i].location;
                 var title = locations[i].title;
                 // create one marker per location, put into marker array
-                var marker = new.google.maps.Marker({
+                var marker = new google.maps.Marker({
                     map: map,
                     position: position,
                     title: title,
